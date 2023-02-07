@@ -17,6 +17,7 @@ module.exports = ({ env }) => ({
                 strapi.admin.services.passport.getStrategyCallbackURL("saml"),
               cert: fs.readFileSync(env("SAML_CERT_PATH"), "utf-8"),
               entryPoint: env("SAML_ENTRYPOINT_URL"),
+              issuer: "passport-saml",
             },
             (accessToken, refreshToken, profile, done) => {
               done(null, {

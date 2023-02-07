@@ -1,4 +1,4 @@
-const SamlStrategy = require("passport-saml").Strategy;
+const SamlStrategy = require("@node-saml/passport-saml").Strategy;
 const fs = require("fs");
 
 module.exports = ({ env }) => ({

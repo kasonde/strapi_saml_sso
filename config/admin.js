@@ -1,5 +1,6 @@
 const SamlStrategy = require("@node-saml/passport-saml").Strategy;
 const fs = require("fs");
+const AzureAdOAuth2Strategy = require("passport-azure-ad-oauth2");
 const jwt = require("jsonwebtoken");
 
 module.exports = ({ env }) => ({
@@ -18,7 +19,7 @@ module.exports = ({ env }) => ({
               scope: ["user:email"],
               tenant: env("MICROSOFT_TENANT_ID", ""),
               callbackURL:
-                strapi.admin.services.passport.getStrategyCallbackURL(
+		    strapi.config.server.url+strapi.admin.services.passport.getStrategyCallbackURL(
                   "azure_ad_oauth2"
                 ),
             },
